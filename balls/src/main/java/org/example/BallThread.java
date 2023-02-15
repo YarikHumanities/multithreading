@@ -33,8 +33,8 @@ public class BallThread extends Thread {
                         return;
                     }
                 }
-                System.out.println("Thread name (from BallThread Class) = "
-                        + Thread.currentThread().getName());
+                System.out.println("Thread name (from BallThread Class) ( = "
+                        + this.getPriority() + ") "+ Thread.currentThread().getName());
 
                 Thread.sleep(5);
             }

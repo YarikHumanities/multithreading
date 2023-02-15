@@ -37,7 +37,25 @@ public class Ball {
             y = new Random().nextInt(this.canvas.getHeight());
         }
     }
-
+    public Ball(Component c, Color color){
+        this.canvas = c;
+        this.id = ++lastId;
+        if(Math.random()<0.5){
+            x = new Random().nextInt(this.canvas.getWidth());
+            y = 0;
+        }else{
+            x = 0;
+            y = new Random().nextInt(this.canvas.getHeight());
+        }
+        this.color = color;
+    }
+    public Ball(Component c, Color color, int _x, int _y){
+        this.canvas = c;
+        this.id = ++lastId;
+        this.x = _x;
+        this.y = _y;
+        this.color = color;
+    }
     public static void f(){
         int a = 0;
     }
