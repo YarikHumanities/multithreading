@@ -65,6 +65,7 @@ public class BounceFrame extends JFrame {
         JButton buttonOneBlue = new JButton("Add1(b)");
         JButton buttonManyBlue = new JButton("AddN(b)");
         JButton buttonManyBlueOneRed = new JButton("AddN&1(b&r)");
+        JButton buttonJoin = new JButton("Join");
         JButton buttonStop = new JButton("Stop");
 
 
@@ -193,6 +194,38 @@ public class BounceFrame extends JFrame {
                 }
             }
         });
+        buttonJoin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Ball b = new Ball(canvas, Color.BLUE, 100, 100);
+                canvas.add(b);
+
+                BallThread thread = new BallThread(b, canvas);
+
+                System.out.println("Thread name = " +
+                        thread.getName());
+
+
+                Ball b1 = new Ball(canvas, Color.RED, 150, 150);
+                canvas.add(b1);
+
+                BallThread thread1 = new BallThread(b1, canvas);
+
+                System.out.println("Thread name = " +
+                        thread1.getName());
+
+                thread.start();
+
+                try {
+                    thread.join(30000);
+                } catch (InterruptedException ex) {
+                    System.out.println(e);
+                }
+
+                thread1.start();
+            }
+        });
         buttonStop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -207,6 +240,7 @@ public class BounceFrame extends JFrame {
         buttonPanel.add(buttonOneBlue);
         buttonPanel.add(buttonManyBlue);
         buttonPanel.add(buttonManyBlueOneRed);
+        buttonPanel.add(buttonJoin);
         content.add(buttonPanel, BorderLayout.SOUTH);
     }
 }
