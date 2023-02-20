@@ -29,34 +29,8 @@ public class BounceFrame extends JFrame {
         content.setLayout(new BorderLayout());
         content.add(this.canvas, BorderLayout.CENTER);
 
-//        Hole hole1 = new Hole(canvas, 100, 100);
-//        this.canvas.add(hole1);
-////        holeCanvas.add(hole1);
-////
-////        content.add(this.holeCanvas, BorderLayout.CENTER);
-////        content.add(this.canvas, BorderLayout.CENTER);
-//        JPanel parent = new JPanel(null);
-////        parent.setPreferredSize(content.getSize());
-////        parent.setMaximumSize(parent.getPreferredSize());
-//
-//        this.canvas = new BallCanvas();
-//        //canvas.setPreferredSize(parent.getSize());
-//        //canvas.setMaximumSize(canvas.getPreferredSize());
-//        canvas.setBackground(Color.RED);
-//        //canvas.setBounds(50, 50, 200, 200);
-//
-//        this.holeCanvas = new HoleCanvas();
-//        //holeCanvas.setPreferredSize(parent.getSize());
-//        //holeCanvas.setMaximumSize(holeCanvas.getPreferredSize());
-//        holeCanvas.setBackground(Color.BLUE);
-//        //holeCanvas.setBounds(100, 100, 100, 100);
-//
-//        parent.add(canvas);
-//        parent.add(holeCanvas);
-//
-//
-//        content.add(parent);
-
+        Hole hole1 = new Hole(canvas, 200, 50);
+        this.canvas.add(hole1);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.lightGray);
@@ -67,28 +41,6 @@ public class BounceFrame extends JFrame {
         JButton buttonManyBlueOneRed = new JButton("AddN&1(b&r)");
         JButton buttonJoin = new JButton("Join");
         JButton buttonStop = new JButton("Stop");
-
-
-//        Timer timer = new Timer(16, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                for(int i = 0; i<canvas.getBalls().size(); i++){
-//
-//                    for(int j = 0; j<canvas.getHoles().size(); j++){
-//
-//                        if(canvas.getBalls().get(i).doCirclesIntersectHole(canvas.getHoles().get(j))){
-//
-//                            System.out.println("Thread name in Hole = " + Thread.currentThread().getName());
-//                            System.out.println("Ball " + i + " in the hole");
-//                            canvas.getBalls().get(i).setColor(Color.GREEN);
-//                            //canvas.getBalls().remove(i);
-//                        }
-//                    }
-//                }
-//
-//            }
-//        });
-//        timer.start();
 
         buttonStart.addActionListener(new ActionListener() {
 
@@ -197,34 +149,20 @@ public class BounceFrame extends JFrame {
         buttonJoin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 Ball b = new Ball(canvas, Color.BLUE, 100, 100);
                 canvas.add(b);
-
-                BallThread thread = new BallThread(b, canvas);
-
-                System.out.println("Thread name = " +
-                        thread.getName());
-
-
                 Ball b1 = new Ball(canvas, Color.RED, 150, 150);
                 canvas.add(b1);
 
-                BallThread thread1 = new BallThread(b1, canvas);
+                BallThread thread1 = new BallThread(b, canvas);
 
-                System.out.println("Thread name = " +
-                        thread1.getName());
-
-                thread.start();
-
-                try {
-                    thread.join(30000);
-                } catch (InterruptedException ex) {
-                    System.out.println(e);
-                }
-
+                JoinBallThread thread2 = new JoinBallThread(b1, canvas, thread1);
                 thread1.start();
+                thread2.start();
+
+
             }
+
         });
         buttonStop.addActionListener(new ActionListener() {
             @Override
