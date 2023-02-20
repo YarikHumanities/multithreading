@@ -29,6 +29,7 @@ public class BallThread extends Thread {
                         b.setColor(Color.GREEN);
                         System.out.println(Thread.currentThread().getName() + " ball turned GREEN");
                         System.out.println("Balls in Holes: " + this.getInHoleCounter);
+                        BounceFrame.setBallsInHoles(BallThread.getInHoleCounter);
 
                         return;
                     }

@@ -15,6 +15,10 @@ public class BounceFrame extends JFrame {
     //private HoleCanvas holeCanvas;
     public static final int WIDTH = 450;
     public static final int HEIGHT = 350;
+    private static JLabel counterLabel = new JLabel("Balls in holes: " + 0);
+    public static void setBallsInHoles(int counter) {
+        counterLabel.setText("Balls in holes: " + counter);
+    }
     public BounceFrame() {
         this.setSize(WIDTH, HEIGHT);
         this.setTitle("Bounce programm");
@@ -172,6 +176,7 @@ public class BounceFrame extends JFrame {
             }
         });
 
+        buttonPanel.add(counterLabel);
         buttonPanel.add(buttonStart);
         buttonPanel.add(buttonStop);
         buttonPanel.add(buttonOneRed);
@@ -179,6 +184,7 @@ public class BounceFrame extends JFrame {
         buttonPanel.add(buttonManyBlue);
         buttonPanel.add(buttonManyBlueOneRed);
         buttonPanel.add(buttonJoin);
+
         content.add(buttonPanel, BorderLayout.SOUTH);
     }
 }
