@@ -6,10 +6,10 @@ public class Counter {
 
     public Counter() {
     }
-    public void increment(){
+    public synchronized void  increment(){
         this.counter_value++;
     }
-    public void decrement(){
+    public synchronized void  decrement(){
         this.counter_value--;
     }
 }

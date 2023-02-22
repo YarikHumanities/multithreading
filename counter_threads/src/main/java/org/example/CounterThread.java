@@ -11,16 +11,16 @@ public class CounterThread extends Thread {
 
     @Override
     public void run(){
-        for(int i = 0; i<50; i++){
+        for(int i = 0; i<100000; i++){
             if(this.choise){
-                System.out.print("Value before (++) = " + this.counter.counter_value + " / ");
+                //System.out.print("Value before (++) = " + this.counter.counter_value + " / ");
                 this.counter.increment();
-                System.out.println("Value after (++) = " + this.counter.counter_value);
+                //System.out.println("Value after (++) = " + this.counter.counter_value);
             }
             else{
-                System.out.print("Value before (--) = " + this.counter.counter_value + " / ");
+                //System.out.print("Value before (--) = " + this.counter.counter_value + " / ");
                 this.counter.decrement();
-                System.out.println("Value after (--) = " + this.counter.counter_value);
+                //System.out.println("Value after (--) = " + this.counter.counter_value);
             }
         }
     }
