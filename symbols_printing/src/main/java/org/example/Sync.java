@@ -37,6 +37,10 @@ public class Sync {
                 Logger.getLogger(Sync.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        if(stop){
+            notifyAll();
+            return;
+        }
         System.out.print(s);
         permission = !permission;
         num++;
