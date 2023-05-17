@@ -39,14 +39,7 @@ public class Hole {
     }
 
     public void draw (Graphics2D g2){
-//        float dash1[] = {10.0f};
-//        BasicStroke dashed =
-//                new BasicStroke(1.0f,
-//                        BasicStroke.CAP_BUTT,
-//                        BasicStroke.JOIN_MITER,
-//                        10.0f, dash1, 0.0f);
-//        g2.setColor(Color.red);
-//        g2.setStroke(dashed);
+
         g2.draw(new Ellipse2D.Double(x,y,XSIZE,YSIZE));
 
     }
